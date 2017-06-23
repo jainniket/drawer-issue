@@ -5,9 +5,6 @@ drawer issue https://github.com/react-community/react-navigation/issues/1960
 2. npm install
 3. react-native run-android
 
-###Project
-https://github.com/jainniket/drawer-issue
-
 ![afof7b](https://user-images.githubusercontent.com/10733088/27467163-998f9c88-57fd-11e7-819f-edb47a453911.gif)
 
 ### Current Behavior
