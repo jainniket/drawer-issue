@@ -12,6 +12,27 @@ export default class HomeScreen extends Component {
   static navigationOptions = {
     drawerLabel: 'Home',
   };
+  state = {
+          lastPress: 0,
+  };
+
+  DOUBLE_TAP_DURATION = 300;
+
+  _handleClick = (action, resetAction) => {
+      const currentTime = parseInt(new Date().getTime());
+      let duration = currentTime - parseInt(this.state.lastPress);
+      console.log(duration);
+      this.setState({lastPress: currentTime});
+      if (parseInt(duration) <= this.DOUBLE_TAP_DURATION) {
+          //Handle Double Tap
+          console.log("Double");
+          return this.props.navigation.navigate('DrawerClose');
+      } else {
+          //Handle Single Tap
+          console.log("Single");
+          return this.props.navigation.navigate('DrawerOpen');
+      }
+  };
 
   render() {
     return (
@@ -19,7 +40,7 @@ export default class HomeScreen extends Component {
         <View style={{ height: 60, width: 120, marginTop: 10 }}>
           <Button
             title="Open Drawer"
-            onPress={() => this.props.navigation.navigate('DrawerOpen')}
+            onPress={() => this._handleClick()}
           />
         </View>
         <Text>Home</Text>
@@ -32,6 +53,28 @@ class MyNotificationsScreen extends React.Component {
   static navigationOptions = {
     drawerLabel: 'Notifications',
   };
+  state = {
+          lastPress: 0,
+
+  };
+
+  DOUBLE_TAP_DURATION = 300;
+
+  _handleClick = (action, resetAction) => {
+      const currentTime = parseInt(new Date().getTime());
+      let duration = currentTime - parseInt(this.state.lastPress);
+      console.log(duration);
+      this.setState({lastPress: currentTime});
+      if (parseInt(duration) <= this.DOUBLE_TAP_DURATION) {
+          //Handle Double Tap
+          console.log("Double");
+          return this.props.navigation.navigate('DrawerClose');
+      } else {
+          //Handle Single Tap
+          console.log("Single");
+          return this.props.navigation.navigate('DrawerOpen');
+      }
+  };
 
   render() {
     return (
@@ -39,7 +82,7 @@ class MyNotificationsScreen extends React.Component {
         <View style={{ height: 60, width: 120, marginTop: 10 }}>
           <Button
             title="Open Drawer"
-            onPress={() => this.props.navigation.navigate('DrawerOpen')}
+            onPress={() => this._handleClick()}
           />
         </View>
         <Text>Notifications</Text>
